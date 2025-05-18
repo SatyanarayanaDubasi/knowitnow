@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - Create Blog Post</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Create a New Blog Post</h1>
+    <form id="postForm">
+      <label for="title">Title</label>
+      <input type="text" id="title" required>
+
+      <label for="content">Content</label>
+      <textarea id="content" rows="6" required></textarea>
+
+      <label for="author">Author</label>
+      <input type="text" id="author" required>
+
+      <button type="submit">Publish</button>
+    </form>
+    <button onclick="logout()">Logout</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    // Redirect to login page if not logged in
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = '/login.html';
+    }
+
+    const form = document.getElementById('postForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const postData = {
+        title: document.getElementById('title').value,
+        content: document.getElementById('content').value,
+        author: document.getElementById('author').value,
+      };
+
+      const res = await fetch('/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postData)
+      });
+
+      if (res.ok) {
+        message.innerText = "✅ Blog post published!";
+        message.style.color = "green";
+        form.reset();
+      } else {
+        message.innerText = "❌ Failed to publish.";
+        message.style.color = "red";
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem('loggedIn');
+      window.location.href = '/login.html';
+    }
+  </script>
+</body>
+</html>
+
