@@ -1,0 +1,37 @@
+<div style="padding: 20px; background-color: #e3f2fd; margin: 10px 20px; border-radius: 8px; font-size: 18px;">
+  👋 Hey Admin..! here is your dashboard: Play with it!
+</div>
+
+
+<div class="dashboard" style="display: flex; padding: 20px;">
+  <div class="left-form" style="flex: 1; margin-right: 40px;">
+    <form action="/admin" method="POST">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" required style="width: 100%; padding: 10px; border: none; margin-bottom: 15px; border-radius: 5px;">
+
+      <label for="content">Content</label>
+      <textarea id="content" name="content" rows="5" required style="width: 100%; padding: 10px; border: none; margin-bottom: 15px; border-radius: 5px;"></textarea>
+
+      <label for="author">Author</label>
+      <input type="text" id="author" name="author" required style="width: 100%; padding: 10px; border: none; margin-bottom: 15px; border-radius: 5px;">
+
+      <button type="submit" style="padding: 10px 20px; background-color: #0077cc; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Add Blog</button>
+    </form>
+  </div>
+
+  <div class="right-blogs" style="flex: 2;">
+    <h3>Existing Blogs</h3>
+    <% if (blogs && blogs.length > 0) { %>
+      <% blogs.forEach(blog => { %>
+        <div style="margin-bottom: 30px;">
+          <h4><%= blog.title %></h4>
+          <p><strong><%= blog.author %></strong></p>
+          <p><%= blog.content %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No blogs yet.</p>
+    <% } %>
+  </div>
+</div>
+

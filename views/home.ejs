@@ -1,0 +1,9 @@
+<h2>All Blogs</h2>
+<% blogs.forEach(blog => { %>
+  <article>
+    <h3><%= blog.title %></h3>
+    <p><%= blog.content %></p>
+    <small>By <%= blog.author %></small>
+    <hr/>
+  </article>
+<% }) %>

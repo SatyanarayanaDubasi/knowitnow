@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background-color: #d3e7fd; display: flex; flex-direction: column; min-height: 100vh;">
+
+  <!-- HEADER -->
+  <header style="background-color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h1 style="margin: 0;">Welcome to KnowItNow Blog</h1>
+
+    <% if (cookies && cookies.loggedIn === 'true') { %>
+      <a href="/logout" style="text-decoration: none; background-color: #dc3545; color: white; padding: 8px 16px; border-radius: 5px;">Logout</a>
+    <% } %>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="content-wrapper" style="flex: 1;">
+    <%- body %>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background-color: #f5f5f5; text-align: center; padding: 10px 0; margin-top: auto;">
+    <p>&copy; 2025 KnowItNow</p>
+  </footer>
+
+</body>
+</html>
+
