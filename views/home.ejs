@@ -1,9 +1,48 @@
-<h2>All Blogs</h2>
-<% blogs.forEach(blog => { %>
-  <article>
-    <h3><%= blog.title %></h3>
-    <p><%= blog.content %></p>
-    <small>By <%= blog.author %></small>
-    <hr/>
-  </article>
-<% }) %>
+<%- include('partials/header') %>
+
+<div style="padding: 20px;">
+  <h2 style="color:#0077cc;">📰 All Blogs</h2>
+
+  <% if (blogs && blogs.length > 0) { %>
+    <% blogs.forEach(blog => { %>
+      <article style="border-bottom:1px solid #ddd; margin-bottom:25px; padding-bottom:15px;">
+        <h3 style="margin-bottom:6px;"><%= blog.title %></h3>
+        <div><%- blog.content %></div> <!-- render HTML -->
+         <h2>Quick Assist</h2>
+
+<p><strong>The Quick Assist Feature in Windows:</strong> A Lifesaver for Remote Support</p>
+
+<p>In today's fast-paced digital world, remote assistance has become an essential tool for IT professionals, tech-savvy individuals, and even everyday users helping friends and family with computer issues. Windows includes a built-in tool called <strong>Quick Assist</strong> that makes remote troubleshooting seamless and secure.</p>
+
+<h3>What is Quick Assist?</h3>
+<p>Quick Assist is a Microsoft-built remote assistance tool integrated into Windows 10 and 11. It allows a helper (such as an IT technician or a friend) to remotely view or control another user’s PC to troubleshoot issues — without needing third-party software.</p>
+
+<h3>How to Use Quick Assist</h3>
+<ul>
+  <li><strong>Step 1:</strong> Open Quick Assist – Search for "Quick Assist" in the Start Menu.</li>
+  <li><strong>Step 2:</strong> Sign In – Log in with a Microsoft account (Outlook, Hotmail, etc.).</li>
+  <li><strong>Step 3:</strong> Share a Code – Generate a 6-digit security code and share it with the user needing help.</li>
+  <li><strong>Step 4:</strong> Start Session – Choose between “View screen” or “Take full control.”</li>
+  <li><strong>Step 5:</strong> Grant Permissions – The user accepts the request and gives permission.</li>
+</ul>
+
+<h3>Why Quick Assist is Better Than Third-Party Tools</h3>
+<ul>
+  <li>✔️ <strong>Pre-installed:</strong> No need to install anything.</li>
+  <li>✔️ <strong>No Cost:</strong> Completely free to use.</li>
+  <li>✔️ <strong>Microsoft Security:</strong> Uses Azure-backed authentication for safety.</li>
+  <li>✔️ <strong>Lightweight:</strong> No bloated features — just fast, secure help.</li>
+</ul>
+
+<h3>Conclusion</h3>
+<p>Whether you’re an IT professional managing multiple devices or just helping a friend, Quick Assist is an invaluable built-in Windows tool. It’s secure, simple, and saves you from third-party headaches. Give it a try — it might save you hours of frustration!</p>
+
+        <small style="color:#555;">✍️ By <%= blog.author %> on <%= blog.createdAt.toDateString() %></small>
+      </article>
+    <% }) %>
+  <% } else { %>
+    <p>No blogs available.</p>
+  <% } %>
+</div>
+
+
